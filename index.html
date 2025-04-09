@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invitación - Laura Galindo</title>
+    <link rel="stylesheet" href="estilo.css">
+    <style>
+        body {
+            background-color: #ffe4e1; /*Rosa pastel inicial*/
+            display: flex;
+            flex-direction: column; /* Para alinear verticalmente los contenedores */
+            justify-content: center; /* Centrar verticalmente el contenido */
+            align-items: center; /* Centrar horizontalmente el contenido */
+            min-height: 100vh; /* Asegurar que ocupa toda la pantalla vertical */
+            margin: 0; /* Restablecer márgenes del cuerpo */
+            overflow-y: auto; /* Permitir scroll vertical solo cuando sea necesario */
+        }
+
+        .contenedor-inicial {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Centrar elementos dentro del contenedor */
+        }
+
+        #imagen-inicio {
+            /* Mostrar en su tamaño original */
+            max-width: none;
+            max-height: none;
+            width:auto;
+            height:auto;
+            display: block; /* Para evitar espacio adicional debajo de la imagen */
+            margin-bottom: 20px; /* Espacio entre la imagen y el botón */
+        }
+
+        button#boton-carta {
+            padding: 15px 30px;
+            font-size: 18px;
+            cursor: pointer;
+            background-color: #f08080; /* Rojo claro */
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .contenedor-segunda-pantalla {
+            display: none; /* Ocultar inicialmente la segunda pantalla */
+            background-color: #ffe4e1; /* Rosa pastel para la segunda pantalla */
+            padding-top: 50px; /* Espacio desde la parte superior */
+            text-align: center; /* Centrar las imágenes horizontalmente */
+            width: 100%; /* Ocupar todo el ancho para que el centrado funcione */
+            margin-bottom: 50px; /* Añadir espacio entre la segunda pantalla y el pie de página */
+        }
+
+        .contenedor-segunda-pantalla img {
+            max-width: 90%; /* Ajustar según sea necesario */
+            height:auto;
+            margin-bottom: 20px; /* Espacio entre imágenes */
+            display: block; /* Evitar espacio extra debajo de las imágenes */
+            margin-left: auto;
+            margin-right: auto; /* Centrar las imágenes dentro del contenedor */
+        }
+
+        .contenedor-segunda-pantalla button#boton-siguiente-segunda {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #f08080; /* Rojo claro */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            margin-left: auto; /* Empujar el botón a la derecha */
+            display: block; /* Para que margin-left: auto funcione */
+            margin-right: 20px; /* Espacio del margen derecho */
+        }
+
+        .contenedor-tercera-pantalla {
+            display: none; /* Ocultar inicialmente la tercera pantalla */
+            background-color: #ffe4e1; /* Rosa pastel para la tercera pantalla */
+            min-height: 100vh;
+            text-align: center; /* Centrar la imagen horizontalmente */
+            padding-top: 50px; /* Espacio desde la parte superior */
+            margin-bottom: 50px; /* Añadir espacio entre la tercera pantalla y el pie de página */
+        }
+
+        .contenedor-tercera-pantalla img {
+            max-width: 90%;
+            height:auto;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 20px; /* Espacio para los botones */
+        }
+
+        .contenedor-botones-tercera {
+            display: flex;
+            justify-content: space-between;
+            width: 90%; /* Ajustar al ancho de la imagen */
+            margin: 0 auto; /* Centrar el contenedor de botones */
+        }
+
+        .contenedor-botones-tercera button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #f08080; /* Rojo claro */
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .contenedor-cuarta-pantalla {
+            display: none; /* Ocultar inicialmente la cuarta pantalla */
+            background-color: #ffe4e1; /* Rosa pastel para la cuarta pantalla */
+            min-height: 100vh;
+            text-align: center; /* Centrar la imagen horizontalmente */
+            padding-top: 50px; /* Espacio desde la parte superior */
+            margin-bottom: 50px; /* Añadir espacio entre la cuarta pantalla y el pie de página */
+        }
+
+        .contenedor-cuarta-pantalla img {
+            max-width: 90%;
+            height:auto;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 20px; /* Espacio para los botones */
+        }
+
+        .contenedor-botones-cuarta {
+            display: flex;
+            justify-content: space-between;
+            width: 90%; /* Ajustar al ancho de la imagen */
+            margin: 0 auto; /* Centrar el contenedor de botones */
+        }
+
+        .contenedor-botones-cuarta button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #f08080; /* Rojo claro */
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .contenedor-quinta-pantalla {
+            display: none; /* Ocultar inicialmente la quinta pantalla */
+            background-color: #ffe4e1; /* Rosa pastel para la quinta pantalla */
+            min-height: 100vh;
+            text-align: center; /* Centrar la imagen horizontalmente */
+            padding-top: 50px; /* Espacio desde la parte superior */
+            margin-bottom: 50px; /* Añadir espacio entre la quinta pantalla y el pie de página */
+        }
+
+        .contenedor-quinta-pantalla img {
+            max-width: 90%;
+            height:auto;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 10px; /* Espacio para la línea */
+        }
+
+        .linea-decorativa-quinta {
+            background-color: #ffc6c7; /* Color del footer */
+            height: 5px; /* Grosor de la línea */
+            width: 70%; /* Ancho de la línea (ajusta según necesites) */
+            margin-bottom: 20px; /* Espacio entre la línea y la siguiente imagen */
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+        }
+
+        .contenedor-sexta-pantalla {
+            display: none; /* Ocultar inicialmente la sexta pantalla */
+            background-color: #ffe4e1; /* Rosa pastel para la sexta pantalla */
+            min-height: 100vh;
+            text-align: center; /* Centrar la imagen horizontalmente */
+            padding-top: 50px; /* Espacio desde la parte superior */
+            margin-bottom: 50px; /* Añadir espacio entre la sexta pantalla y el pie de página */
+        }
+
+        .contenedor-sexta-pantalla img {
+            max-width: 90%;
+            height:auto;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 20px; /* Espacio para los botones */
+        }
+
+        .contenedor-botones-sexta {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .contenedor-botones-sexta button {
+            padding: 15px 30px;
+            font-size: 18px;
+            cursor: pointer;
+            background-color: #f08080; /* Rojo claro */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            width: 80%; /* Ajusta el ancho de los botones */
+            box-sizing: border-box; /* Incluye el padding en el ancho */
+        }
+
+        footer {
+            background-color: #ffc6c7; /*Rosa oscura*/
+            padding: 15px 0;
+            text-align: center; /* Centrar el texto horizontalmente */
+            font-size: 0.9em;
+            display: none; /* Ocultar el pie de página inicialmente */
+            width: 100%; /*Hacer que el pie de página ocupa todo el ancho */
+            box-sizing: border-box; /* Incluir el padding en el ancho */
+            color: rgb(0, 0, 0); /* Opcional: Cambiar el color del texto para que contraste */
+            position: relative; /* Cambiar a relativo para que funcione margin-bottom */
+            bottom: auto; /* Asegurar que no esté pegado al fondo */
+            margin-top: 50px; /* Añadir espacio encima del pie de página */
+        }
+
+        footer p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <audio id="musica-fondo" loop autoplay style="display:none;">
+        <source src="Musica de fondo.mp3" type="audio/mpeg">
+        Tu navegador no soporta la reproducción de audio.
+    </audio>
+
+    <div class="contenedor-inicial">
+        <img src="Portada de carta.png" alt="Imagen de inicio" id="imagen-inicio">
+        <button id="boton-carta" style="display: block; margin: 20px auto;">Leer Carta</button>
+    </div>
+
+    <div class="contenedor-segunda-pantalla">
+        <img src="Letrero 15 años.png" alt="Segunda Imagen">
+        <img src="Nombre.png" alt="Tercera Imagen">
+        <button id="boton-siguiente-segunda">Siguiente</button>
+    </div>
+
+    <div class="contenedor-tercera-pantalla">
+        <img src="Mensaje.png" alt="Nueva Imagen de Fondo">
+        <div class="contenedor-botones-tercera">
+            <button id="boton-anterior">Anterior</button>
+            <button id="boton-siguiente-tercera">Siguiente</button>
+        </div>
+    </div>
+
+    <div class="contenedor-cuarta-pantalla">
+        <img src="Datos.png" alt="Otra Imagen">
+        <div class="contenedor-botones-cuarta">
+            <button id="boton-anterior-cuarta">Anterior</button>
+            <button id="boton-siguiente-cuarta">Siguiente</button>
+        </div>
+    </div>
+
+    <div class="contenedor-quinta-pantalla">
+        <img src="Vestuario.png" alt="Última Imagen">
+        <div class="linea-decorativa-quinta"></div>
+        <img src="Lluvia de sobres.png" alt="Imagen Centrada Final">
+        <div class="linea-decorativa-quinta"></div>
+        <img src="Reservación de color.png" alt="Nueva Última Imagen">
+        <div class="contenedor-botones-sexta">
+            <button id="boton-anterior-quinta">Anterior</button>
+            <button id="boton-siguiente-quinta">Siguiente</button>
+        </div>
+    </div>
+
+    <div class="contenedor-sexta-pantalla" style="display: none;">
+        <img src="Nombre.png" alt="Nueva Imagen Septima" style="max-width: 90%; height: auto; display: block; margin: 0 auto; margin-bottom: 20px;">
+        <div style="background-color: #ffc6c7; height: 5px; width: 70%; margin: 20px auto;"></div>
+        <div class="contenedor-botones-sexta">
+            <button id="boton-confirmar" style="padding: 15px 30px; font-size: 18px; cursor: pointer; background-color: #f08080; color: white; border: none; border-radius: 5px; margin-bottom: 15px;">Confirmar asistencia</button>
+            <button id="boton-descargar" style="padding: 15px 30px; font-size: 18px; cursor: pointer; background-color: #f08080; color: white; border: none; border-radius: 5px; margin-bottom: 15px;">Descargar Invitación</button>
+            <button id="boton-anterior-septima" style="padding: 10px 20px; font-size: 16px; cursor: pointer; background-color: #f08080; color: white; border: none; border-radius: 5px;">Anterior</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>Copyright ©</p>
+        <p>ㅤ</p>
+        <p>Daniel Fernando Cruz Rangel</p>
+        <p>Correo: cruzrangeldanielfernando3@gmail.com</p>
+        <p>Contacto: +57 3142485540</p>
+        <p>Florencia Caquetá</p>
+        "2025"
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
